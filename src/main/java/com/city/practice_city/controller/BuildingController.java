@@ -56,4 +56,8 @@ public class BuildingController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @GetMapping(value = "/count")
+    public ResponseEntity<?> count() {
+        return ResponseEntity.ok(buildingService.count());
+    }
 }

@@ -56,6 +56,25 @@ public class BuildingServiceImpl implements BuildingService {
         return true;
     }
 
+    @Override
+    public String count() {
+        return "Количество объектов класса в файле = " + numberFromCsV();
+    }
+
+    private int numberFromCsV() {
+        try (ICsvBeanReader beanReader = new CsvBeanReader(new FileReader(file), CsvPreference.STANDARD_PREFERENCE)) {
+            final String[] header = beanReader.getHeader(true);
+            final CellProcessor[] processors = getReadProcessors();
+            int i = 0;
+            while (beanReader.read(Building.class, header, processors) != null) {
+                i++;
+            }
+            return i;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private List<Building> readFromCsv() {
         try(ICsvBeanReader beanReader = new CsvBeanReader(new FileReader(file), CsvPreference.STANDARD_PREFERENCE)) {
             final String[] header = beanReader.getHeader(true);

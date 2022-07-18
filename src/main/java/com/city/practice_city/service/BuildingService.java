@@ -14,4 +14,5 @@ public interface BuildingService {
 
     boolean delete(UUID id);
 
+    String count();
 }
