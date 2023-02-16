@@ -1,2 +1,2 @@
-# prectice_rest_city
+# practice_rest_city
 Приложение, написанное с помощью Spring, обрабатывает HTTP запросы (Get,Post,Delete). В качестве хранения данных используется файл с разрешением csv
